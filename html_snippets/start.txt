@@ -4,3 +4,27 @@
     <a href="#" class="button">Start game</a>
   </header>
 </div>
+
+
+
+
+function checkForWins() {
+  for (let i in winningOptions) {
+    let array = winningOptions[i];
+    whoWon(array, 'box box-filled-2 disabled', 'screen screen-win screen-win-two');
+    whoWon(array, 'box box-filled-1 disabled', 'screen screen-win screen-win-one');
+  }
+}
+
+let total = 0;
+function whoWon(array, clase, winningClass) {
+  array.forEach(li => {
+    if (liList[li].className === clase) {
+      total++;
+      if (total == 3) {
+        endGame(winningClass, 'Winner');
+      }
+    }
+  });
+  total = 0;
+}
